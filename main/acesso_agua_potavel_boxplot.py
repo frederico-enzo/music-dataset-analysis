@@ -38,6 +38,6 @@ plt.suptitle("")  # Remover título automático do boxplot
 plt.xlabel("Continente", fontsize=12)
 plt.ylabel("Proporção de acesso à água potável (%)", fontsize=12)
 plt.xticks(rotation=45, fontsize=10)
-plt.grid(axis='y', linestyle='--', alpha=0.6)
+plt.grid(axis='y', linestyle='--', alpha=0.8)
 plt.tight_layout()
 plt.show()

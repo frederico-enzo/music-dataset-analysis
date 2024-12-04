@@ -40,7 +40,7 @@ plt.xticks(ticks=sorted(line_chart_data['ano'].unique()), rotation=45, fontsize=
 plt.legend(title="Países", fontsize=12, title_fontsize=14, loc='upper left', bbox_to_anchor=(1, 1), borderpad=1)
 
 # Melhorar a grade do gráfico com mais visibilidade
-plt.grid(visible=True, linestyle='--', alpha=0.7, linewidth=1.5)  # Ajuste de alpha e linewidth
+plt.grid(visible=True, linestyle='--', alpha=0.7, linewidth=1.0)  # Ajuste de alpha e linewidth
 
 # Ajustar layout para melhor visibilidade
 plt.tight_layout()
