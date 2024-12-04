@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns  # Para paletas de cores melhores
@@ -7,6 +8,10 @@ file_path = 'data/world_data.csv'
 
 # Carregar os dados
 data = pd.read_csv(file_path)
+
+# Criar a pasta "graficos" se não existir
+output_dir = "graficos"
+os.makedirs(output_dir, exist_ok=True)
 
 # Ajustar nomes de continentes para unificar
 data['continente'] = data['continente'].replace({
@@ -56,6 +61,7 @@ plt.legend(title="Continente", fontsize=12, loc='upper left', bbox_to_anchor=(1,
 
 # Ajustar layout para melhor visibilidade
 plt.tight_layout()
+plt.savefig(os.path.join(output_dir, "crescimento_populacional_linhas.png"))
 
 # Mostrar o gráfico
 plt.show()

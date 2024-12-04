@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -6,6 +7,10 @@ file_path = 'data/world_data.csv'
 
 # Carregar os dados
 data = pd.read_csv(file_path)
+
+# Criar a pasta "graficos" se não existir
+output_dir = "graficos"
+os.makedirs(output_dir, exist_ok=True)
 
 # Filtrar dados apenas do Brasil
 brazil_data = data[data['pais'] == 'Brazil']
@@ -45,6 +50,7 @@ else:
 
     # Ajustar layout para melhor visibilidade
     plt.tight_layout()
+    plt.savefig(os.path.join(output_dir, "correlacao_populacao_idosa_expectativa_vida.png"))
 
     # Exibir gráfico
     plt.show()

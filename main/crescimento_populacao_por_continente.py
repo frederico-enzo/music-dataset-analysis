@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -5,6 +6,10 @@ import seaborn as sns
 # Carregar os dados
 file_path = 'data/world_data.csv'
 data = pd.read_csv(file_path)
+
+# Criar a pasta "graficos" se não existir
+output_dir = "graficos"
+os.makedirs(output_dir, exist_ok=True)
 
 # Ajustar nomes de continentes para unificar
 data['continente'] = data['continente'].replace({
@@ -56,6 +61,7 @@ plt.grid(visible=True, linestyle='--', alpha=0.7, linewidth=0.7)
 
 # Ajustar o layout para garantir boa visibilidade dos rótulos e legendas
 plt.subplots_adjust(hspace=0.4, top=0.93)  # Ajustando hspace e o topo para evitar sobreposição
+plt.savefig(os.path.join(output_dir, "crescimento_populacao_por_continente.png"))
 
 # Exibir o gráfico
 plt.show()

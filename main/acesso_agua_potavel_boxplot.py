@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -6,6 +7,10 @@ file_path = 'data/world_data.csv'
 
 # Carregar os dados
 data = pd.read_csv(file_path)
+
+# Criar a pasta "graficos" se não existir
+output_dir = "graficos"
+os.makedirs(output_dir, exist_ok=True)
 
 # Ajustar nomes de continentes para unificar
 data['continente'] = data['continente'].replace({
@@ -39,5 +44,9 @@ plt.xlabel("Continente", fontsize=12)
 plt.ylabel("Proporção de acesso à água potável (%)", fontsize=12)
 plt.xticks(rotation=45, fontsize=10)
 plt.grid(axis='y', linestyle='--', alpha=0.8)
+# Salvar o gráfico em um arquivo PNG
 plt.tight_layout()
+plt.savefig(os.path.join(output_dir, "acesso_agua_potavel_boxplot.png"))
+
 plt.show()
+

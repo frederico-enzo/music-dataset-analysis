@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -6,6 +7,10 @@ file_path = 'data/world_data.csv'
 
 # Carregar os dados
 data = pd.read_csv(file_path)
+
+# Criar a pasta "graficos" se não existir
+output_dir = "graficos"
+os.makedirs(output_dir, exist_ok=True)
 
 # Verificar colunas relacionadas à expectativa de vida
 data.columns
@@ -44,4 +49,6 @@ plt.grid(visible=True, linestyle='--', alpha=0.7, linewidth=1.0)  # Ajuste de al
 
 # Ajustar layout para melhor visibilidade
 plt.tight_layout()
+plt.savefig(os.path.join(output_dir, "expectativa_vida.png"))
+
 plt.show()
