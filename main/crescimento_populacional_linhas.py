@@ -22,7 +22,6 @@ data['continente'] = data['continente'].replace({
 main_continents = ['Africa', 'America', 'Asia', 'Europe', 'Oceania', 'Antarctica']
 filtered_data = data[data['continente'].isin(main_continents)]
 
-
 # Preparar dados para o gráfico de linhas: crescimento médio populacional por continente
 growth_data = filtered_data[['ano', 'continente', 'crescimento_populacao']].dropna()
 mean_growth_per_continent = growth_data.groupby(['ano', 'continente']).mean().reset_index()
