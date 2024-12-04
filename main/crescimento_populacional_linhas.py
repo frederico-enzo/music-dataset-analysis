@@ -7,8 +7,24 @@ file_path = 'data/world_data.csv'
 # Carregar os dados
 data = pd.read_csv(file_path)
 
+# Ajustar nomes de continentes para unificar
+data['continente'] = data['continente'].replace({
+    'North America': 'America',
+    'South America': 'America',
+    'Australasia': 'Oceania',
+    'Central America': 'America',
+    'Europe & Central Asia': 'Europe',
+    'East Asia & Pacific': 'Asia',
+    'Sub-Saharan Africa': 'Africa'
+})
+
+# Filtrar os seis principais continentes
+main_continents = ['Africa', 'America', 'Asia', 'Europe', 'Oceania', 'Antarctica']
+filtered_data = data[data['continente'].isin(main_continents)]
+
+
 # Preparar dados para o gráfico de linhas: crescimento médio populacional por continente
-growth_data = data[['ano', 'continente', 'crescimento_populacao']].dropna()
+growth_data = filtered_data[['ano', 'continente', 'crescimento_populacao']].dropna()
 mean_growth_per_continent = growth_data.groupby(['ano', 'continente']).mean().reset_index()
 
 # Criar gráfico de linhas para cada continente
